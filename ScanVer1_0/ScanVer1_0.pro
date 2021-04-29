@@ -24,3 +24,6 @@ FORMS += \
 
 
 DESTDIR= ../ScanVer_bin
+
+RESOURCES += \
+    qrc.qrc
