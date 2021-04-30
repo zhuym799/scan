@@ -23,6 +23,16 @@
 	font: 75 14pt &quot;Agency FB&quot;;
 }
 
+QToolButton
+{
+  
+	background-color: rgb(170, 170, 255);
+}
+QToolButton:hover
+{
+   
+	background-color: rgb(170, 0, 255);
+}
 
 </string>
   </property>
@@ -37,7 +47,7 @@
           <string notr="true">font: 14pt &quot;Arial&quot;;</string>
          </property>
          <property name="text">
-          <string>说明：干党扫描制作工具 软件版本：V1.0.0-20210429 软件更新日期:2021-04-29</string>
+          <string>说明：文书扫描管理系统 软件版本：V1.0.0-20210429 软件更新日期:2021-04-29</string>
          </property>
         </widget>
        </item>
@@ -53,7 +63,7 @@
           <string>退出</string>
          </property>
          <property name="icon">
-          <iconset resource="qrc.qrc">
+          <iconset>
            <normaloff>:/image/5.png</normaloff>:/image/5.png</iconset>
          </property>
          <property name="iconSize">
@@ -68,12 +78,12 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QToolButton" name="toolButton">
+        <widget class="QToolButton" name="toolButton_scan">
          <property name="text">
           <string>图像扫描</string>
          </property>
          <property name="icon">
-          <iconset resource="qrc.qrc">
+          <iconset>
            <normaloff>:/image/1.png</normaloff>:/image/1.png</iconset>
          </property>
          <property name="iconSize">
@@ -88,12 +98,12 @@
         </widget>
        </item>
        <item row="0" column="2">
-        <widget class="QToolButton" name="toolButton_5">
+        <widget class="QToolButton" name="toolButton_handle">
          <property name="text">
           <string>图像处理</string>
          </property>
          <property name="icon">
-          <iconset resource="qrc.qrc">
+          <iconset>
            <normaloff>:/image/2.png</normaloff>:/image/2.png</iconset>
          </property>
          <property name="iconSize">
@@ -108,12 +118,12 @@
         </widget>
        </item>
        <item row="0" column="3">
-        <widget class="QToolButton" name="toolButton_8">
+        <widget class="QToolButton" name="toolButton_high">
          <property name="text">
           <string>图像转高清</string>
          </property>
          <property name="icon">
-          <iconset resource="qrc.qrc">
+          <iconset>
            <normaloff>:/image/3.png</normaloff>:/image/3.png</iconset>
          </property>
          <property name="iconSize">
@@ -128,12 +138,12 @@
         </widget>
        </item>
        <item row="0" column="4">
-        <widget class="QToolButton" name="toolButton_6">
+        <widget class="QToolButton" name="toolButton_pdf">
          <property name="text">
           <string>图像合成PDF</string>
          </property>
          <property name="icon">
-          <iconset resource="qrc.qrc">
+          <iconset>
            <normaloff>:/image/4.png</normaloff>:/image/4.png</iconset>
          </property>
          <property name="iconSize">
@@ -157,9 +167,7 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="qrc.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>toolButton_exit</sender>
