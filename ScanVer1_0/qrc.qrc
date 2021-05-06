@@ -5,5 +5,10 @@
         <file>image/3.png</file>
         <file>image/4.png</file>
         <file>image/5.png</file>
+        <file>image/blue_button_down.png</file>
+        <file>image/blue_button_nomal.png</file>
+        <file>image/grey_button_down.png</file>
+        <file>image/grey_button_nomal.png</file>
+        <file>image/login_bg.jpg</file>
     </qresource>
 </RCC>

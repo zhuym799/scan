@@ -1,11 +1,9 @@
 ﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include <QMainWindow>
-const QString softwares="文书扫描管理系统";
 namespace Ui {
 class MainWindow;
 }
-
 class MainWindow : public QMainWindow
 {
     Q_OBJECT

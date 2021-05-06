@@ -1,4 +1,4 @@
-
+QT       += sql
 QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = ScanVer1_0
@@ -11,14 +11,19 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    qglobalstatic.cpp
+    logindialog.cpp \
+    DBUtil/dbutil.cpp \
+    qscanglobal.cpp
 
 HEADERS += \
         mainwindow.h \
-    qglobalstatic.h
+    logindialog.h \
+    DBUtil/dbutil.h \
+    qscanglobal.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    logindialog.ui
 
 
 DESTDIR= ../ScanVer_bin
