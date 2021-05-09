@@ -2,7 +2,6 @@
 #define LOGINDIALOG_H
 
 #include <QDialog>
-#include <QtSql>
 #include "qscanglobal.h"
 namespace Ui {
 class loginDialog;
@@ -23,7 +22,6 @@ private slots:
     void on_checkBox_5_clicked();
 private:
     Ui::loginDialog *ui;
-    QSqlDatabase  DB; //数据库
 };
 
 #endif // LOGINDIALOG_H

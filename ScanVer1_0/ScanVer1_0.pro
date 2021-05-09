@@ -13,18 +13,65 @@ SOURCES += \
         mainwindow.cpp \
     logindialog.cpp \
     DBUtil/dbutil.cpp \
-    qscanglobal.cpp
+    qscanglobal.cpp \
+    scannersdk/dtwaincore.cpp \
+    scannersdk/scannerconfig.cpp \
+    scannersdk/scanner.cpp \
+    scannersdk/scanner_operation.cpp \
+    scannersdk/scannerconfig_sane.cpp \
+    scannerform.cpp \
+    handleform.cpp \
+    highform.cpp \
+    pdfform.cpp \
+    filedirectoryform.cpp
 
 HEADERS += \
-        mainwindow.h \
+    mainwindow.h \
     logindialog.h \
     DBUtil/dbutil.h \
-    qscanglobal.h
+    qscanglobal.h \
+    scannersdk/dtwaincore.h \
+    scannersdk/scannerconfig.h \
+    scannersdk/scanner.h \
+    scannersdk/scanner_operation.h \
+    scannersdk/scannerconfig_sane.h \
+    scannerform.h \
+    handleform.h \
+    highform.h \
+    pdfform.h \
+    filedirectoryform.h
+
+
 
 FORMS += \
-        mainwindow.ui \
-    logindialog.ui
+    mainwindow.ui \
+    logindialog.ui \
+    scannersdk/scannerconfig.ui \
+    scannersdk/scannerconfig_sane.ui \
+    scannerform.ui \
+    handleform.ui \
+    highform.ui \
+    pdfform.ui \
+    filedirectoryform.ui
 
+contains(QT_ARCH,x86_64){
+       DEFINES += QT_WIN
+        #openssl
+        win32: LIBS += -L$$PWD/libs/ -lcrypto
+        #opencv
+        win32: LIBS += -L$$PWD/libs/ -lopencv_world401.dll
+}
+
+
+
+INCLUDEPATH += $$PWD/thirdparty/
+INCLUDEPATH += $$PWD/thirdparty/openssl/include
+DEPENDPATH += $$PWD/thirdparty/openssl/include
+
+INCLUDEPATH += $$PWD/thirdparty/opencv-4.0.1/
+
+INCLUDEPATH += $$PWD/scannersdk/sane/include
+DEPENDPATH += $$PWD/scannersdk/sane/include
 
 DESTDIR= ../ScanVer_bin
 

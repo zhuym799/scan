@@ -3,6 +3,8 @@
 #include "mainwindow.h"
 #include <QMessageBox>
 #include <qdebug.h>
+#include <QTextCodec>
+#include <QSettings>
 loginDialog::loginDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::loginDialog)
@@ -52,47 +54,17 @@ void loginDialog::on_login_btn_4_clicked()
     if( QString(password).isEmpty()){
         return;
     }
-    QList<QStringList> list=QScanGlobal::instance.selectAllUser();
-    qDebug()<<list.count();
-    QString userNoCheck;
-    QString userPasswordCheck;
-    QString userType;
-    QString userName;
-    DB=QSqlDatabase::addDatabase("QSQLITE"); //添加 SQL LITE数据库驱动
-    DB.setDatabaseName("MyDataBase.db"); //设置数据库名称
-    if (!DB.open())   //打开数据库
+    QString where=" where No='"+userNo+"' and password='"+password+"'";
+    QList<QStringList> list=QScanGlobal::instance.selectAllUser(where);
+    if(list.count()>0)
     {
-        QMessageBox::warning(this, "错误", "打开数据库失败",
-                             QMessageBox::Ok,QMessageBox::NoButton);
-        return;
-    }
-    QString sql="select * from UserInfosTable where jobNo='"+userNo+"'";
-    QSqlQuery sql_query(QSqlDatabase::database());
-    sql_query.setForwardOnly(true);
-    sql_query.prepare(sql);
-    sql_query.exec();
-    bool flag=true;
-    while(sql_query.next())
-    {
-        userNoCheck=sql_query.value(1).toString();
-        userPasswordCheck=sql_query.value(2).toString();
-        userName=sql_query.value(3).toString();
-        userType=sql_query.value(4).toString();
-        flag =false;
-    }
-    if(flag){
-        QMessageBox::information(NULL,"消息提示","用户不存在!");
-        return;
-    }
-    if(QString::compare(userPasswordCheck,password)==0){
-
         QSettings set(QApplication::applicationDirPath() + "/config.ini", QSettings::IniFormat);
         set.beginGroup("userinfo");
         set.setValue("userno", userNo);
         if (ui->checkBox_5->checkState() == Qt::Checked)
         {
             set.setValue("learn", "true");
-            set.setValue("password", userPasswordCheck);
+            set.setValue("password", password);
         } else {
             set.setValue("learn", "false");
             set.setValue("password", "");
@@ -102,14 +74,10 @@ void loginDialog::on_login_btn_4_clicked()
         this->close();
         mainwindow->showFullScreen();
         mainwindow->show();
-    }else{
-        QMessageBox::information(NULL,"消息提示","密码错误!");
+    } else{
+        QMessageBox::information(this,"消息提示","用户不存在或密码错误!");
         return;
     }
-    DB.close();
-    DB.removeDatabase("MyDataBase.db");
-
-
 }
 
 void loginDialog::on_cancel_btn_4_clicked()
@@ -129,7 +97,6 @@ void loginDialog::on_checkBox_5_clicked()
         set.setValue("learn", "false");
     }
     set.endGroup();
-
     return;
 }
 
