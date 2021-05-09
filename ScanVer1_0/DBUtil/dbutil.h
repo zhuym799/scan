@@ -12,12 +12,12 @@ public:
     ~DBUtil();
     static bool opendatabase();
     static void closedatabase();
-    static bool insert(QString &table, QStringList &names,QStringList &values);
-    static bool Updata(QString &table, QStringList &names,QStringList &values, QString &expression);
-    static bool del(QString &table, QString &expression);
+    static bool insert(QString table, QStringList names,QStringList values);
+    static bool Updata(QString table, QStringList names,QStringList values, QString expression);
+    static bool del(QString table, QString expression);
     static QList<QStringList>  GetValues(QString table, QString where);
-    static QSqlQuery GetQSqlQuery(QString &sql);
-    static bool ExeSql(QString &sql);
+    static QSqlQuery GetQSqlQuery(QString sql);
+    static bool ExeSql(QString sql);
 private:
     static QSqlDatabase _db;
 };

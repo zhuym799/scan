@@ -10,5 +10,8 @@
         <file>image/grey_button_down.png</file>
         <file>image/grey_button_nomal.png</file>
         <file>image/login_bg.jpg</file>
+        <file>image/add.ico</file>
+        <file>image/del.ico</file>
+        <file>image/update.ico</file>
     </qresource>
 </RCC>

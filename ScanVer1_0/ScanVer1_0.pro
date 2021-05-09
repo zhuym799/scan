@@ -23,7 +23,8 @@ SOURCES += \
     handleform.cpp \
     highform.cpp \
     pdfform.cpp \
-    filedirectoryform.cpp
+    filedirectoryform.cpp \
+    archinfoeditdialog.cpp
 
 HEADERS += \
     mainwindow.h \
@@ -39,7 +40,8 @@ HEADERS += \
     handleform.h \
     highform.h \
     pdfform.h \
-    filedirectoryform.h
+    filedirectoryform.h \
+    archinfoeditdialog.h
 
 
 
@@ -52,7 +54,8 @@ FORMS += \
     handleform.ui \
     highform.ui \
     pdfform.ui \
-    filedirectoryform.ui
+    filedirectoryform.ui \
+    archinfoeditdialog.ui
 
 contains(QT_ARCH,x86_64){
        DEFINES += QT_WIN
@@ -61,9 +64,6 @@ contains(QT_ARCH,x86_64){
         #opencv
         win32: LIBS += -L$$PWD/libs/ -lopencv_world401.dll
 }
-
-
-
 INCLUDEPATH += $$PWD/thirdparty/
 INCLUDEPATH += $$PWD/thirdparty/openssl/include
 DEPENDPATH += $$PWD/thirdparty/openssl/include

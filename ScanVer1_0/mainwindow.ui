@@ -106,8 +106,8 @@ QToolButton:hover
          </property>
          <property name="iconSize">
           <size>
-           <width>100</width>
-           <height>100</height>
+           <width>80</width>
+           <height>80</height>
           </size>
          </property>
          <property name="toolButtonStyle">
@@ -126,8 +126,8 @@ QToolButton:hover
          </property>
          <property name="iconSize">
           <size>
-           <width>100</width>
-           <height>100</height>
+           <width>80</width>
+           <height>80</height>
           </size>
          </property>
          <property name="toolButtonStyle">
@@ -146,8 +146,8 @@ QToolButton:hover
          </property>
          <property name="iconSize">
           <size>
-           <width>100</width>
-           <height>100</height>
+           <width>80</width>
+           <height>80</height>
           </size>
          </property>
          <property name="toolButtonStyle">
@@ -176,8 +176,8 @@ QToolButton:hover
          </property>
          <property name="iconSize">
           <size>
-           <width>100</width>
-           <height>100</height>
+           <width>80</width>
+           <height>80</height>
           </size>
          </property>
          <property name="toolButtonStyle">
@@ -196,8 +196,8 @@ QToolButton:hover
          </property>
          <property name="iconSize">
           <size>
-           <width>100</width>
-           <height>100</height>
+           <width>80</width>
+           <height>80</height>
           </size>
          </property>
          <property name="toolButtonStyle">
@@ -239,18 +239,18 @@ QToolButton:hover
        <widget class="QGroupBox" name="groupBox">
         <property name="minimumSize">
          <size>
-          <width>200</width>
+          <width>400</width>
           <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>200</width>
+          <width>400</width>
           <height>16777215</height>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true"/>
         </property>
         <property name="title">
          <string>文件目录</string>
@@ -260,7 +260,7 @@ QToolButton:hover
       <item>
        <widget class="QStackedWidget" name="stackedWidget">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true"/>
         </property>
         <property name="currentIndex">
          <number>0</number>

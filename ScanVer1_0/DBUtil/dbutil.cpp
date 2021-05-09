@@ -49,7 +49,7 @@ void DBUtil::closedatabase()
 
 
 
-bool DBUtil::insert(QString &table, QStringList &names, QStringList &values)
+bool DBUtil::insert(QString table, QStringList names, QStringList values)
 {
     if (names.size() != values.size())
     {
@@ -89,7 +89,6 @@ bool DBUtil::insert(QString &table, QStringList &names, QStringList &values)
         }
 
         sql = sql + QString(")");
-        //qDebug()<<sql;
         if (query.exec(sql))
         {
             return true;
@@ -100,9 +99,10 @@ bool DBUtil::insert(QString &table, QStringList &names, QStringList &values)
             return false;
         }
     }
+     return false;
 }
 
-bool DBUtil::ExeSql(QString &sql){
+bool DBUtil::ExeSql(QString sql){
 
     QSqlQuery query(QSqlDatabase::database());
     if (query.exec(sql))
@@ -116,14 +116,12 @@ bool DBUtil::ExeSql(QString &sql){
 
 }
 
-bool DBUtil::Updata(QString &table, QStringList &names, QStringList &values, QString &expression)
+bool DBUtil::Updata(QString table, QStringList names, QStringList values, QString expression)
 {
     if (names.size() != values.size())
     {
         return false;
     }
-
-
     QSqlQuery query(_db);
     if (opendatabase()){
         QString sql = QString("update ")+table+QString(" set ");
@@ -138,8 +136,8 @@ bool DBUtil::Updata(QString &table, QStringList &names, QStringList &values, QSt
                 sql = sql + QString(" ,");
             }
         }
-
         sql = sql + QString(" where ") + expression;
+        qDebug()<<sql;
         if (query.exec(sql))
         {
             return true;
@@ -149,15 +147,17 @@ bool DBUtil::Updata(QString &table, QStringList &names, QStringList &values, QSt
             return false;
         }
     }
+    return false;
 }
 
 
-bool DBUtil::del(QString &table, QString &expression)
+bool DBUtil::del(QString table, QString expression)
 {
 
     QSqlQuery query(_db);
-
     QString sql = QString("delete from ") + table + QString(" where ") + expression;
+
+    qDebug()<<sql;
     if (opendatabase()){
         if (query.exec(sql))
         {
@@ -171,10 +171,12 @@ bool DBUtil::del(QString &table, QString &expression)
 }
 QList<QStringList>  DBUtil::GetValues(QString table, QString where)
 {
+
     QList<QStringList> list;
     QSqlQuery query(_db);
     if (opendatabase()){
         QString sql = QString("select * from ") + table +where;
+        qDebug()<<sql;
         query.exec(sql);
         QSqlRecord rec = query.record();
         int row=rec.count();
@@ -191,12 +193,13 @@ QList<QStringList>  DBUtil::GetValues(QString table, QString where)
     return  list;
 }
 
-QSqlQuery DBUtil::GetQSqlQuery(QString &sql)
+QSqlQuery DBUtil::GetQSqlQuery(QString sql)
 {
-    QSqlQuery query(QSqlDatabase::database());
-    query.setForwardOnly(true);
-    query.prepare(sql);
-    query.exec();
-
+    QSqlQuery query(_db);
+    if (opendatabase()){
+        query.setForwardOnly(true);
+        query.prepare(sql);
+        query.exec();
+    }
     return query;
 }
